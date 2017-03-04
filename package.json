@@ -2,7 +2,19 @@
   "name": "geojson2mvt",
   "version": "0.0.1",
   "description": "",
+  "keywords": [
+    "mapboxgl",
+    "vector tiles",
+    "web mapping",
+    "web maps",
+    "geojson"
+  ],
   "main": "src/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NYCPlanning/geojson2mvt.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
