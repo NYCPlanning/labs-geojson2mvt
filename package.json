@@ -10,7 +10,7 @@
     "geojson"
   ],
   "main": "src/index.js",
-  "license": "MIT",
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/NYCPlanning/geojson2mvt.git"
@@ -19,8 +19,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
   "dependencies": {
-    "geojson-vt": "^2.4.0"
+    "geojson-vt": "^2.4.0",
+    "vt-pbf": "^2.1.2"
   }
 }
