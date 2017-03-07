@@ -8,10 +8,11 @@ We are using mapboxGL in [The Capital Planning Platform](http://capitalplanning.
 Install
 `npm install geojson2mvt`
 
-`geojson2mvt` takes a filepath and a config object, and builds the the pyramid in the specified output directory
+`geojson2mvt` takes a geojson object and a config object, and builds the the pyramid in the specified output directory
 
 ```
-var geojson2mvt = require('./src');
+var fs = require('fs');
+var geojson2mvt = require('geojson2mvt');
 
 const filePath = './bus_routes.geojson';
 
@@ -25,13 +26,19 @@ var options = {
   layerName: 'layer0',
 };
 
-geojson2mvt(filePath, options);
+var geoJson = JSON.parse(fs.readFileSync(filePath, "utf8"));
+
+// build the static tile pyramid
+geojson2mvt(geoJson, options);
 ```
 Check out `/example` for a test project that you can try locally
 
 ##Options
 
 `rootDir` - string (required) - the filepath of the directory that will be the root of the file pyramid.  It will be created if it doesn't exist.
+
 `bbox` - array (required) - array of lat/lon bounds like `[s,w,n,e]`
+
 `zoom` - object (required) - object with `min` and `max` properties for the desired zoom levels in the tile pyramid
+
 `layername` - string (required) - the name of the layer in the vector tile that the data will be stored in.  When displaying data from an MVT, you must specify which layer to use.  

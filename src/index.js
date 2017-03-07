@@ -4,12 +4,11 @@ var geojsonvt =  require('geojson-vt');
 
 var helpers = require('./helpers.js');
 
-var geojson2mvt = function(filePath, options) {
+var geojson2mvt = function(geoJson, options) {
 
-    var geoJson = JSON.parse(fs.readFileSync(filePath, "utf8"));
     var tileIndex = geojsonvt(geoJson);
 
-    // create the "root directory" to place downloaded tiles in 
+    // create the "root directory" to place downloaded tiles in
     try {fs.mkdirSync(options.rootDir, 0777);}
     catch(err){
         if (err.code !== 'EEXIST') callback(err);
@@ -51,9 +50,9 @@ var geojson2mvt = function(filePath, options) {
 
                 // TODO what should be written to the tile if there is no data?
                 var output = mvt !== null ? mvt : '';
-                fs.writeFileSync(`${xPath}/${y}.mvt`, output); 
+                fs.writeFileSync(`${xPath}/${y}.mvt`, output);
                 tileCount++;
-                
+
             }
         }
     }

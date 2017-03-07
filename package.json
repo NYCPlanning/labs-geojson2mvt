@@ -10,7 +10,6 @@
     "geojson"
   ],
   "main": "src/index.js",
-  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/NYCPlanning/geojson2mvt.git"
