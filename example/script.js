@@ -1,3 +1,4 @@
+var fs = require('fs');
 var geojson2mvt = require('../src');
 
 const filePath = './bus_routes.geojson';
@@ -12,5 +13,7 @@ var options = {
   layerName: 'layer0',
 };
 
-geojson2mvt(filePath, options);
+var geoJson = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
+// build the static tile pyramid
+geojson2mvt(geoJson, options);
