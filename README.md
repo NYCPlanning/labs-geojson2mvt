@@ -1,10 +1,13 @@
-#geojson2mvt
+# geojson2mvt
+
 Cuts a file pyramid of static vector tiles (.mvt) from a geojson file
 
-#Why
+# Why
+
 We are using mapboxGL in [The Capital Planning Platform](http://capitalplanning.nyc.gov), and needed an alternative to downloading large static data files for local rendering on the map.  We didn't want to put them into a service that would require $ and maintenance, so static vector tiles seemed like a useful alternative for data that will not change very often.
 
-##How to Use
+## How to Use
+
 Install
 `npm install geojson2mvt`
 
@@ -33,7 +36,7 @@ geojson2mvt(geoJson, options);
 ```
 Check out `/example` for a test project that you can try locally
 
-##Options
+## Options
 
 `rootDir` - string (required) - the filepath of the directory that will be the root of the file pyramid.  It will be created if it doesn't exist.
 
