@@ -6,7 +6,11 @@ var helpers = require('./helpers.js');
 
 var geojson2mvt = function(geoJson, options) {
 
-    var tileIndex = geojsonvt(geoJson);
+    var tileIndex = geojsonvt(geoJson, {
+        maxZoom: options.zoom.max,
+        indexMaxZoom: options.zoom.max,
+        indexMaxPoints: 0
+    });
 
     // create the "root directory" to place downloaded tiles in
     try {fs.mkdirSync(options.rootDir, 0777);}
