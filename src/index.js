@@ -4,19 +4,21 @@ var geojsonvt =  require('geojson-vt');
 
 var helpers = require('./helpers.js');
 
-var geojson2mvt = function(geoJsons, options) {
+var geojson2mvt = function(options) {
 
-    var layerNames = options.layerNames;
-
-    if (!Array.isArray(geoJsons)) {
-      geoJsons = [geoJsons];
-      layerNames = [options.layerName];
+    if (arguments.length == 2) {
+      var geoJson = options;
+      options = arguments[1];
+      options.layers = {};
+      options.layers[options.layerName] = geoJson;
     }
 
-    var i = 0, ii = geoJsons.length;
+    var layerNames = Object.keys(options.layers);
+
+    var i = 0, ii = layerNames.length;
     var tileIndex = new Array(ii);
     for (; i < ii; ++i) {
-        tileIndex[i] = geojsonvt(geoJsons[i], {
+        tileIndex[i] = geojsonvt(options.layers[layerNames[i]], {
             maxZoom: options.zoom.max,
             indexMaxZoom: options.zoom.max,
             indexMaxPoints: 0
